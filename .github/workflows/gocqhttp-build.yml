@@ -34,8 +34,8 @@ jobs:
       - name: Build go-cqhttp image
         uses: docker/build-push-action@v1
         with:
-          username: pcrbot
-          password: ${{ secrets.PCRBOT_DOCKER_TOKEN }}
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           repository: pcrbot/gocqhttp
           dockerfile: gocqhttp/Dockerfile
           tags: latest,${{ steps.fetch_gocq.outputs.version }}
@@ -43,8 +43,8 @@ jobs:
       - name: Build go-cqhttp-ffmpeg image
         uses: docker/build-push-action@v1
         with:
-          username: pcrbot
-          password: ${{ secrets.PCRBOT_DOCKER_TOKEN }}
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           repository: pcrbot/gocqhttp
           dockerfile: gocqhttp/ffmpeg.Dockerfile
           tags: ffmpeg,${{ steps.fetch_gocq.outputs.version }}-ffmpeg
