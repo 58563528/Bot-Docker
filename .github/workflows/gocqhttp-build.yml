@@ -34,26 +34,24 @@ jobs:
                   print("::set-output name=asset_url::" + asset["browser_download_url"])
                   sys.exit(0)
           sys.exit(1)
-
       - name: Download latest gocqhttp
         run: |
           wget -q ${{ steps.fetch_gocq.outputs.asset_url }} -O go-cqhttp.tar.gz
           tar zxf go-cqhttp.tar.gz
-
       - name: Build go-cqhttp image
         uses: docker/build-push-action@v1
         with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-          repository: ${{ secrets.DOCKER_HUB_USERNAME }}/gocqhttp
+          username: pcrbot
+          password: ${{ secrets.PCRBOT_DOCKER_TOKEN }}
+          repository: pcrbot/gocqhttp
           dockerfile: gocqhttp/Dockerfile
           tags: latest,${{ steps.fetch_gocq.outputs.version }}
 
       - name: Build go-cqhttp-ffmpeg image
         uses: docker/build-push-action@v1
         with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-          repository: ${{ secrets.DOCKER_HUB_USERNAME }}/gocqhttp
+          username: pcrbot
+          password: ${{ secrets.PCRBOT_DOCKER_TOKEN }}
+          repository: pcrbot/gocqhttp
           dockerfile: gocqhttp/ffmpeg.Dockerfile
           tags: ffmpeg,${{ steps.fetch_gocq.outputs.version }}-ffmpeg
