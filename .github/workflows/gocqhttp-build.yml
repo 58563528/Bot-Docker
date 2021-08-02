@@ -13,7 +13,7 @@ jobs:
     env:
       PAT: ${{ secrets.PAT }} 
     name: Push Docker image to GitHub Packages
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
