@@ -41,7 +41,7 @@ jobs:
           tar zxf go-cqhttp.tar.gz
 
       - name: Build go-cqhttp image
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v2
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
@@ -50,7 +50,7 @@ jobs:
           tags: latest,${{ steps.fetch_gocq.outputs.version }}
 
       - name: Build go-cqhttp-ffmpeg image
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v2
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
