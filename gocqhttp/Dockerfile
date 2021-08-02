@@ -1,6 +1,12 @@
 FROM alpine:latest
-ENV TZ=Asia/Shanghai
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+ENV TIME_ZONE Asiz/Shanghai
+RUN \
+...
+#安装tzdata安装包
+&& apk add --no-cache tzdata \
+#设置时区
+&& echo "${TIME_ZONE}" > /etc/timezone \
+&& ln -sf /usr/share/zoneinfo/${TIME_ZONE} /etc/localtime \
 COPY ./go-cqhttp /usr/bin/cqhttp
 WORKDIR /data
 
