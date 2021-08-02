@@ -11,8 +11,8 @@ jobs:
       - name: Build Hoshinobot Image
         uses: docker/build-push-action@v1
         with:
-          username: pcrbot
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.PCRBOT_DOCKER_TOKEN }}
-          repository: pcrbot/hoshinobot
+          repository: ${{ secrets.DOCKER_HUB_USERNAME }}/hoshinobot
           dockerfile: hoshinobot/Dockerfile
           tags: latest
