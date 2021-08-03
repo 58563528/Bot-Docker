@@ -8,5 +8,3 @@ COPY ./go-cqhttp /usr/bin/cqhttp
 WORKDIR /data
 
 ENTRYPOINT ["/usr/bin/cqhttp"]
-
-ENTRYPOINT ["/usr/bin/cqhttp"]
