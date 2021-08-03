@@ -1,6 +1,9 @@
 name: Build gocqhttp image
 on: workflow_dispatch
 
+env:
+  TZ: Asia/Shanghai
+
 jobs:
   push_to_registry:
     name: Push Docker image to GitHub Packages
